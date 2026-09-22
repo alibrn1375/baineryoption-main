@@ -1,0 +1,6 @@
+{
+  "name": "FO-X 5M — موتور تحقیقاتی اردر فلو طلا",
+  "description": "سیستم تحقیقاتی و شبیه‌ساز کمّی اردر فلو فیوچرز طلا (GC) و قیمت XAU/USD در تایم‌فریم ۵ دقیقه با تحلیل فوت‌پرینت، دلتا، جذب نقدینگی و خروجی سه‌حالته",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

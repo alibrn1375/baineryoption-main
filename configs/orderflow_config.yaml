@@ -1,0 +1,68 @@
+# FO-X 5M Order Flow & Footprint Configuration
+# Strict Dynamic Configuration - No Hardcoded Values
+
+instruments:
+  GC:
+    tick_size: 0.10
+    price_precision: 1
+    description: "Gold Futures COMEX"
+  GC_FUT:
+    tick_size: 0.10
+    price_precision: 1
+    description: "Gold Futures COMEX (Alias)"
+  XAUUSD:
+    tick_size: 0.01
+    price_precision: 2
+    description: "Spot Gold / USD"
+  GOLD:
+    tick_size: 0.01
+    price_precision: 2
+    description: "Spot Gold (Alias)"
+
+footprint:
+  timeframe: "5m"
+  timeframe_seconds: 300
+  calculate_cvd: true
+  min_volume_threshold: 0.0
+  strict_bid_ask_required: true
+
+sessions:
+  asia:
+    name: "ASIA"
+    start_utc: "00:00:00"
+    end_utc: "08:00:00"
+  london:
+    name: "LONDON"
+    start_utc: "08:00:00"
+    end_utc: "13:30:00"
+  new_york:
+    name: "NEW_YORK"
+    start_utc: "13:30:00"
+    end_utc: "20:00:00"
+  post_market:
+    name: "POST_MARKET"
+    start_utc: "20:00:00"
+    end_utc: "23:59:59"
+
+orderflow:
+  delta:
+    lookback_period: 20
+    extreme_percentile_high: 90.0
+    extreme_percentile_low: 10.0
+    min_samples: 5
+  imbalance:
+    ratio_threshold: 3.0       # 300% volume dominance over diagonal opposite
+    minimum_volume: 10.0       # Minimum contracts to qualify as institutional imbalance
+    minimum_delta: 5.0
+  stacked_imbalance:
+    min_consecutive_levels: 3  # Minimum 3 stacked contiguous levels
+    max_level_gap_ticks: 1
+  absorption:
+    volume_percentile_threshold: 80.0
+    price_efficiency_max: 0.35 # Low price progress relative to volume
+    rejection_return_pct: 0.40 # Wick/rejection return into bar
+    min_absorption_volume: 50.0
+  exhaustion:
+    delta_drop_ratio: 0.50     # Delta exhaustion drop
+    thin_volume_threshold: 0.30
+    lookback_period: 10

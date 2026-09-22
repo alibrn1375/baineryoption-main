@@ -1,0 +1,21 @@
+# FO-X 5M Validation Engine Configuration
+
+validation:
+  replay_speed: "FAST"               # "REAL_TIME", "FAST", "STEP_BY_STEP"
+  payout_percentage: 0.85            # Default broker return rate (85%)
+  expiry_minutes: 5                  # Binary option duration in minutes
+  entry_delay_ms: 200                # Simulated broker API network delay
+  spread_assumption: 0.10            # Bid/Ask spread penalty in price units
+  execution_slippage: 0.05           # Adverse slippage penalty
+  tie_handling: "REFUND"             # "REFUND", "LOSS", "HALF_LOSS"
+
+  monte_carlo:
+    iterations: 10000                # Number of bootstrap reshuffle simulations
+    ruin_hurdle_units: 20.0          # Drawdown threshold for ruin probability
+
+  walk_forward:
+    in_sample_bars: 50               # Number of trades in training window
+    out_of_sample_bars: 20           # Number of trades in unseen validation window
+    step_size: 20                    # Rolling step size
+
+  confidence_level: 0.95             # Statistical significance level (Wilson CI)

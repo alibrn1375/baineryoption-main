@@ -1,0 +1,25 @@
+# FO-X 5M Live Market Data Integration Configuration
+
+data:
+  active_provider: "NINJATRADER"      # "NINJATRADER", "WEBSOCKET", "SIMULATED"
+  symbol: "GC_FUT"                   # Target trading instrument
+  timezone: "UTC"                    # Timestamp alignment
+
+  providers:
+    ninjatrader:
+      host: "127.0.0.1"
+      port: 8088
+      auto_reconnect: true
+
+    websocket:
+      uri: "wss://stream.marketdata.local/v1/ticks"
+      heartbeat_interval_sec: 15.0
+      reconnect_attempts: 5
+
+  quality_thresholds:
+    max_latency_ms: 500.0             # Latency alert threshold
+    max_spread_points: 2.0            # Spread anomaly threshold
+    drop_out_of_order_ticks: true
+
+  event_bus:
+    max_queue_size: 10000             # Memory buffer size before backpressure drop

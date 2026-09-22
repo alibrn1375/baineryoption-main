@@ -1,0 +1,8 @@
+# FO-X 5M Dashboard Configuration
+
+dashboard:
+  refresh_rate_ms: 500             # UI polling/smoothing interval
+  websocket_timeout: 30            # Timeout in seconds before socket reconnect
+  max_history_items: 200           # Maximum decision journal records retained in memory
+  timezone: "UTC"                  # Display and log timezone
+  theme: "dark_quant_terminal"     # High-contrast quant theme

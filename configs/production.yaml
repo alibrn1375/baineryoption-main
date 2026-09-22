@@ -1,0 +1,52 @@
+# FO-X 5M Production System Configuration
+
+environment: "production" # "development", "testing", "production"
+system:
+  name: "FO-X 5M Quantitative Engine"
+  version: "1.0.0"
+  timezone: "UTC"
+  audit_mode: true
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  api_prefix: "/api/v1"
+  workers: 4
+  rate_limit_per_minute: 120
+  allowed_hosts: ["*"]
+
+database:
+  engine: "postgresql" # "postgresql", "sqlite"
+  host: "localhost"
+  port: 5432
+  name: "fox_trading"
+  user: "fox_admin"
+  pool_size: 10
+  max_overflow: 20
+  pool_timeout: 30
+
+storage:
+  research_dir: "data/research"
+  paper_trades_dir: "data/paper_trading"
+  backup_dir: "data/backups"
+  log_dir: "logs"
+
+logging:
+  level: "INFO" # "DEBUG", "INFO", "WARNING", "ERROR"
+  format: "json" # "json", "text"
+  rotation_daily: true
+  retention_days: 30
+  log_to_file: true
+  log_to_console: true
+
+data_provider:
+  active: "ninjatrader"
+  auto_reconnect: true
+  heartbeat_interval_sec: 10.0
+  max_feed_latency_ms: 250.0
+
+security:
+  jwt_algorithm: "HS256"
+  jwt_expiration_minutes: 1440
+  enable_cors: true
+  secure_headers: true

@@ -1,0 +1,19 @@
+# FO-X 5M Paper Trading & Live Simulation Configuration
+
+paper_trading:
+  starting_balance: 10000.0          # Initial virtual balance in USD
+  default_stake: 25.0                # Default stake per virtual trade in USD
+  payout_percentage: 0.85            # Simulated broker payout rate (85%)
+  expiry_minutes: 5                  # Standard contract duration in minutes
+
+  execution_assumptions:
+    entry_delay_ms: 200              # Broker transmission latency
+    spread_points: 0.10              # Bid/Ask spread penalty
+    slippage_points: 0.05            # Adverse execution slippage
+
+  risk_guard:
+    max_daily_trades: 20             # Maximum trades per trading session
+    max_consecutive_losses: 3        # Maximum losses before engagement of cooldown
+    max_drawdown_percentage: 15.0    # Peak-to-valley drawdown limit
+    block_on_news: true              # Halt paper trading on high/critical news
+    block_on_extreme_volatility: true

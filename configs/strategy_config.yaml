@@ -1,0 +1,31 @@
+# FO-X 5M Strategy & Decision Framework Configuration
+
+decision:
+  minimum_score: 75.0               # Minimum composite quality score [0-100]
+  minimum_probability: 0.58          # Minimum conservative Wilson probability required
+  minimum_sample_size: 15            # Minimum historical sample count for statistical significance
+  min_payout_rate: 0.80              # Minimum broker payout percentage required (80%)
+  max_news_risk: "LOW"               # Maximum allowed news risk ("NONE", "LOW")
+
+setups:
+  setup_a:
+    name: "Liquidity Sweep + Absorption"
+    enabled: true
+    min_wick_ratio: 0.40
+    min_absorption_score: 0.60
+
+  setup_b:
+    name: "Imbalance Momentum Continuation"
+    enabled: true
+    min_stacked_levels: 3
+    min_delta_strength: 1.2
+
+  setup_c:
+    name: "Aggressive Momentum Exhaustion"
+    enabled: true
+    min_delta_drop_ratio: 0.50
+
+  setup_d:
+    name: "Failed Auction Range Rejection"
+    enabled: true
+    min_rejection_wick: 0.35

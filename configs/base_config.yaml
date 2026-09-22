@@ -1,0 +1,60 @@
+# FO-X 5M Base Configuration File
+# Version: 1.0.0
+
+app:
+  name: "FO-X 5M Quantitative Engine"
+  environment: "development"
+  debug: false
+  version: "1.0.0"
+
+logging:
+  level: "INFO"
+  format: "structured"
+  log_to_file: true
+  log_file_path: "logs/fox5m.log"
+  rotation: "100 MB"
+  retention: "30 days"
+
+database:
+  db_type: "duckdb"
+  db_path: "database/fox5m.duckdb"
+  auto_vacuum: true
+
+data:
+  primary_symbol: "XAUUSD"
+  reference_symbol: "GC"
+  default_symbol: "XAUUSD"
+  tick_data_path: "data/ticks"
+  parquet_cache_path: "data/cache"
+  storage_type: "parquet"
+  timezone: "UTC"
+  enable_validation: true
+  max_memory_mb: 4096
+
+research:
+  base_timeframe: "5m"
+  timezone: "UTC"
+  strict_validation: true
+
+context:
+  structure:
+    swing_length: 3
+    bos_min_ticks: 2
+  liquidity:
+    tolerance_ticks: 3
+    sweep_rejection_pct: 0.40
+    max_active_zones: 20
+  regime:
+    volatility_window: 20
+    trend_threshold_ratio: 1.8
+  session:
+    timezone: "UTC"
+    sessions:
+      asia: { start: "00:00:00", end: "08:00:00" }
+      london: { start: "08:00:00", end: "13:30:00" }
+      new_york: { start: "13:30:00", end: "20:00:00" }
+      overlap_london_ny: { start: "13:30:00", end: "16:00:00" }
+      post_market: { start: "20:00:00", end: "23:59:59" }
+  news:
+    quarantine_before_minutes: 15
+    quarantine_after_minutes: 20
